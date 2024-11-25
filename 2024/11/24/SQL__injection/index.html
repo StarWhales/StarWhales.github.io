@@ -14,7 +14,7 @@
 <meta property="og:description" content="sqli-labs靶场闯关笔记一些零散的知识?id&#x3D;      闭合方式： “id” (id) (’id‘)((id)) ((‘id’)) ((“id”))等 and 1&#x3D;1 order by     对某一字段进行排序（判断字段数） union select 1,2,…,(from …)    判断回显点 limit 0,1;其中第一位是从第几个开始，比如0代表从第一个开始，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-11-24T07:11:35.875Z">
-<meta property="article:modified_time" content="2024-11-25T09:07:01.758Z">
+<meta property="article:modified_time" content="2024-11-25T15:00:02.688Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -101,12 +101,10 @@
 
 <details>
 <summary>fopen以只读方式打开并显示文件示例</summary>
-<pre><code class="language-php"><?php
-$filename = 'E:\\PHPstudy\\PHPstudy\\phpstudy_pro\\WWW\\1.txt';
+<pre><code class="language-php">$filename = 'E:\\PHPstudy\\PHPstudy\\phpstudy_pro\\WWW\\1.txt';
 $fp = fopen($filename, 'r');//fopen返回文件资源
 $content = fread($fp, filesize($filename));
 echo $content;
-?>
 </code></pre>
 </details>
 
@@ -116,11 +114,8 @@ echo $content;
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">union select 联合查询 ，即合并（取交集，结果中没有重复行）前后两个查询；前提是前后查询</span><br><span class="line">视图必须拥有相同数量的列，列也必需拥有相同的数据类型。例如：</span><br><span class="line">SELECT name, salary FROM employees (where 1=2)//加上这个后前者查询空集，只显示后者</span><br><span class="line">UNION</span><br><span class="line">SELECT name, salary FROM managers;</span><br></pre></td></tr></table></figure>
 
-<details>
-<summary></summary>
-<pre><code class="language-php">
 
-<p></code></pre></p>
+
 </details>
 
       
