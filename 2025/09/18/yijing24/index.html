@@ -1,0 +1,413 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>蚁景 | StarWhale</title><meta name="author" content="StarWhale"><meta name="copyright" content="StarWhale"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="—Kali知识命令相关：12345678sudo bash LinuxEnvConfig.shcd &#x2F;var&#x2F;www&#x2F;htmlpwdmkdir testtouch 1.txtrm [-r[f]] file.txtcp [-r] file.txt &#x2F;tmp[&#x2F;1.txt]passwd 账户名 			--- 改密码  权限：1234567ls -lchmod 755 1.txt777为:  111 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蚁景">
+<meta property="og:url" content="http://example.com/2025/09/18/yijing24/index.html">
+<meta property="og:site_name" content="StarWhale">
+<meta property="og:description" content="—Kali知识命令相关：12345678sudo bash LinuxEnvConfig.shcd &#x2F;var&#x2F;www&#x2F;htmlpwdmkdir testtouch 1.txtrm [-r[f]] file.txtcp [-r] file.txt &#x2F;tmp[&#x2F;1.txt]passwd 账户名 			--- 改密码  权限：1234567ls -lchmod 755 1.txt777为:  111 1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png">
+<meta property="article:published_time" content="2025-09-18T13:13:33.089Z">
+<meta property="article:modified_time" content="2025-12-03T14:52:30.086Z">
+<meta property="article:author" content="StarWhale">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png"><link rel="shortcut icon" href="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png"><link rel="canonical" href="http://example.com/2025/09/18/yijing24/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '蚁景',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" alt="Logo"><span class="site-name">StarWhale</span></a><a class="nav-page-title" href="/"><span class="site-name">蚁景</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">蚁景</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-18T13:13:33.089Z" title="发表于 2025-09-18 21:13:33">2025-09-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-03T14:52:30.086Z" title="更新于 2025-12-03 22:52:30">2025-12-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="—Kali知识"><a href="#—Kali知识" class="headerlink" title="—Kali知识"></a>—Kali知识</h1><h2 id="命令相关："><a href="#命令相关：" class="headerlink" title="命令相关："></a>命令相关：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> bash LinuxEnvConfig.sh</span><br><span class="line"><span class="built_in">cd</span> /var/www/html</span><br><span class="line"><span class="built_in">pwd</span></span><br><span class="line"><span class="built_in">mkdir</span> <span class="built_in">test</span></span><br><span class="line"><span class="built_in">touch</span> 1.txt</span><br><span class="line"><span class="built_in">rm</span> [-r[f]] file.txt</span><br><span class="line"><span class="built_in">cp</span> [-r] file.txt /tmp[/1.txt]</span><br><span class="line">passwd 账户名 			--- 改密码</span><br></pre></td></tr></table></figure>
+
+<h2 id="权限："><a href="#权限：" class="headerlink" title="权限："></a>权限：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">chmod 755 1.txt</span><br><span class="line">777为:  111 101 101</span><br><span class="line">	    rwx r-x  r-x</span><br><span class="line">属主（Owner）：文件的创建者。</span><br><span class="line">属组（Group）：与文件相关联的用户组。</span><br><span class="line">其他（Others）：系统上所有其他用户。</span><br></pre></td></tr></table></figure>
+
+<h2 id="下载："><a href="#下载：" class="headerlink" title="下载："></a>下载：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git下载整个项目，仅限git仓库</span><br><span class="line">wget下载单个文件</span><br><span class="line"></span><br><span class="line">git clone https://gitee.com/yijingsec/LinuxEnvConfig.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1、列出系统中所有可用的Java运行时环境的符号链接</span><br><span class="line">update-alternatives --list java</span><br><span class="line">2、选择默认的Java运行时环境</span><br><span class="line">update-alternatives --config java</span><br></pre></td></tr></table></figure>
+
+<h2 id="vim："><a href="#vim：" class="headerlink" title="vim："></a>vim：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">vim 111</span><br><span class="line"></span><br><span class="line">命令模式：</span><br><span class="line">G：表示移动到文件的最后一行</span><br><span class="line">gg：表示移动到文件的第一行</span><br><span class="line">$：表示移动到当前行的末尾</span><br><span class="line">H：表示移动到当前屏幕的首行（Home 位置）    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑模式：</span><br><span class="line">i：在当前光标位置插入文本。</span><br><span class="line">I：在当前行的第一个非空字符前插入。</span><br><span class="line">a：在当前光标后插入文本。</span><br><span class="line">A：在当前行的末尾插入文本。</span><br><span class="line">o：在当前行下方新开一行并插入。</span><br><span class="line">O：在当前行上方新开一行并插入。</span><br><span class="line"></span><br><span class="line">末行模式：</span><br><span class="line">:w：保存文件。</span><br><span class="line">:q：退出 Vim。</span><br><span class="line">:wq 或 :x：保存文件并退出。</span><br><span class="line">:q!：不保存退出。</span><br></pre></td></tr></table></figure>
+
+<h2 id="ssh连接Kali："><a href="#ssh连接Kali：" class="headerlink" title="ssh连接Kali："></a>ssh连接Kali：</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@<span class="number">192</span>.<span class="number">168</span>.<span class="number">11</span>.<span class="number">130</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="docker："><a href="#docker：" class="headerlink" title="docker："></a>docker：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">基本：</span><br><span class="line">docker -v</span><br><span class="line">systemctl status docker 	---查看docker服务状态</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl stop 服务名</span><br><span class="line">systemctl restart 服务名</span><br><span class="line">systemctl <span class="built_in">enable</span> docker		---开机自启动docker服务</span><br><span class="line">systemctl is-enabled 服务名</span><br><span class="line">systemctl <span class="built_in">disable</span> 服务名</span><br><span class="line"></span><br><span class="line">镜像：</span><br><span class="line">docker pull library/镜像名:latest		---下载镜像，library表示官方源，lates表示最新，这两个可省略</span><br><span class="line">docker images -a			---列出镜像</span><br><span class="line"></span><br><span class="line">┌──(root㉿myKali)-[~]</span><br><span class="line">└─# docker images -a       </span><br><span class="line">REPOSITORY    TAG       IMAGE ID       CREATED       SIZE</span><br><span class="line">hello-world   latest    1b44b5a3e06a   5 weeks ago   10.1kB</span><br><span class="line">    REPOSITORY：镜像所在的仓库名称</span><br><span class="line">    TAG:镜像标签</span><br><span class="line">    IMAGE ID:镜像 ID</span><br><span class="line">    CREATED：镜像的创建日期(不是获取该镜像的日期)</span><br><span class="line">    SIZE：镜像大小</span><br><span class="line">    </span><br><span class="line"><span class="built_in">sudo</span> docker rmi 镜像名称或镜像ID		 ---删除镜像</span><br><span class="line"></span><br><span class="line">容器操作：</span><br><span class="line">docker run -itd --name=启动的容器名字（自定义） 镜像名或者ID /bin/bash	---启动容器</span><br><span class="line"><span class="comment">#docker run -itd --name=hello-world000 1b44b5a3e06a /bin/bash</span></span><br><span class="line">    -i：以交互模式运行容器。</span><br><span class="line">    -t：分配一个伪终端，容器启动后会进入容器命令行</span><br><span class="line">    -d：以守护式模式运行容器，在后台运行。</span><br><span class="line">    --name：为容器指定一个名称。</span><br><span class="line">    /bin/bash：启动容器后在容器中打开一个bash</span><br><span class="line">docker ps				---列出正在运行中的容器</span><br><span class="line">docker ps -a			---列出所有已经创建的容器（包括运行中和停止的）</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器名或容器<span class="built_in">id</span> /bin/bash		---进入容器</span><br><span class="line">docker start 容器名或容器<span class="built_in">id</span></span><br><span class="line">docker stop 容器名或容器<span class="built_in">id</span></span><br><span class="line">docker <span class="built_in">rm</span> 容器名或容器<span class="built_in">id</span></span><br><span class="line"></span><br><span class="line">靶场搭建：</span><br><span class="line">git <span class="built_in">clone</span> https://gitee.com/yijingsec/vulhub.git		---Vulhub靶场下载</span><br><span class="line"><span class="comment">#进入对应漏洞靶场目录后执行此命令，该命令会自动下载镜像、自动创建和启动容器，不需要额外手动操作</span></span><br><span class="line">docker-compose up -d</span><br><span class="line">docker-compose down			---删除靶场</span><br></pre></td></tr></table></figure>
+
+<h1 id="—信息收集知识"><a href="#—信息收集知识" class="headerlink" title="—信息收集知识"></a>—信息收集知识</h1><h2 id="状态码："><a href="#状态码：" class="headerlink" title="状态码："></a>状态码：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">HTTP状态码由三位数字组成，首位数字定义了响应的类别，共分为五大类：</span><br><span class="line">1、 1xx（信息性状态码）</span><br><span class="line">表示服务器已接收请求，正在处理</span><br><span class="line">示例：100 Continue（继续发送请求体）</span><br><span class="line">2、2xx（成功状态码）</span><br><span class="line">表示请求已被服务器成功接收、理解并处理</span><br><span class="line">示例：200 OK（请求成功）</span><br><span class="line">3、 3xx（重定向状态码）</span><br><span class="line">表示需要客户端进一步操作才能完成请求</span><br><span class="line">示例：301 Moved Permanently（资源永久迁移）</span><br><span class="line">4、4xx（客户端错误状态码）</span><br><span class="line">表示请求存在错误，服务器无法处理</span><br><span class="line">示例：404 Not Found（资源未找到）</span><br><span class="line">5、5xx（服务器错误状态码）</span><br><span class="line">表示服务器在处理请求时发生了内部错误</span><br><span class="line">示例：500 Internal Server Error（服务器内部错误）</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>状态描述</th>
+<th>含义与应用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>OK</td>
+<td>请求成功，服务器返回请求的资源，是最常见的成功状态码</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created</td>
+<td>请求已成功处理并创建了新资源（常用于 POST 请求创建资源，如新建用户、新增文章）</td>
+</tr>
+<tr>
+<td>301</td>
+<td>Moved Permanently</td>
+<td>资源已永久移动到新位置，客户端应使用新 URL 进行后续请求（如网站域名更换）</td>
+</tr>
+<tr>
+<td>302</td>
+<td>Found</td>
+<td>资源临时移动到新位置，客户端应继续使用原 URL（如临时跳转、活动页面临时迁移）</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+<td>资源未修改，客户端可使用本地缓存的版本（用于 HTTP 缓存机制，减少重复请求）</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>请求语法错误或参数无效（如参数格式错误、必填参数缺失），服务器无法理解</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>请求需要身份验证（如登录态失效、未携带 Token），客户端未提供或验证失败</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>服务器拒绝请求，客户端已通过身份验证，但没有目标资源的访问权限</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>请求的资源不存在或已被移除（如访问不存在的页面、调用已删除的接口）</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed</td>
+<td>请求使用的方法不被服务器支持（如用 POST 访问仅支持 GET 的接口、用 PUT 访问仅支持 DELETE 的接口）</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+<td>服务器内部发生错误（如代码逻辑异常、数据库连接失败），无法完成请求处理</td>
+</tr>
+<tr>
+<td>502</td>
+<td>Bad Gateway</td>
+<td>网关或代理服务器从上游服务器（如后端业务服务器）收到无效响应</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+<td>服务器暂时无法处理请求（通常是服务器维护、资源耗尽，一般为临时状态）</td>
+</tr>
+</tbody></table>
+<h2 id="src："><a href="#src：" class="headerlink" title="src："></a>src：</h2><p> 1、国企央企(CNVD)			<a target="_blank" rel="noopener" href="https://www.cnvd.org.cn/">https://www.cnvd.org.cn</a><br> 2、教育平台SRC			<a target="_blank" rel="noopener" href="https://src.sjtu.edu.cn/">https://src.sjtu.edu.cn</a><br> 3、私企(漏洞盒子)			<a target="_blank" rel="noopener" href="https://www.vulbox.com/">https://www.vulbox.com</a><br> 4、补天漏洞平台(公益SRC)			<a target="_blank" rel="noopener" href="https://www.butian.net/">https://www.butian.net</a><br> 5、企业SRC			<a target="_blank" rel="noopener" href="https://www.anquanke.com/src/">https://www.anquanke.com/src/</a></p>
+<h2 id="域名："><a href="#域名：" class="headerlink" title="域名："></a>域名：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">主域名：</span><br><span class="line">1、需要购买</span><br><span class="line">2、需要备案</span><br><span class="line"></span><br><span class="line">顶级域名：（用户看到域名就能初步判断网站用途）</span><br><span class="line">.com 代表商业机构、.edu 代表教育机构，.gov 代表政府机构</span><br></pre></td></tr></table></figure>
+
+<h2 id="企业资产收集："><a href="#企业资产收集：" class="headerlink" title="企业资产收集："></a>企业资产收集：</h2><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">#</span>例：&quot;E:<span class="keyword">\下</span>载<span class="keyword">\蚁</span>景<span class="keyword">\web</span>24期培训<span class="keyword">\正</span>课<span class="keyword">\资</span>产收集<span class="keyword">\蚁</span>景<span class="keyword">\蚁</span>景资产收集.md&quot;	（可用ARL灯塔全自动收集）</span><br><span class="line"></span><br><span class="line">1、建立一个新文件夹用于信息收集，然后新建一个文档记录收集结果</span><br><span class="line">2、ICP备案查主域名：（如：湘ICP备2020017860号-1）</span><br><span class="line">https://beian.miit.gov.cn/<span class="params">#</span>/Integrated/index</span><br><span class="line">https://www.icpapi.com/</span><br><span class="line">3、备案实体查询：企查查，天眼查，爱企查</span><br><span class="line">4、继续查询备案实体的ICP备案</span><br><span class="line">5、子域名查询</span><br><span class="line">	1.bing语法 --- site:主域名</span><br><span class="line">	2.fofa语法 --- domain=&quot;主域名&quot;</span><br><span class="line">	3.layer暴力枚举</span><br><span class="line">6、js文件查询：python JSFinder.py -u http://www.antvsion.com</span><br><span class="line">7、聚合工具：python oneforall.py --target antvsion.com run</span><br><span class="line">8、小蓝本继续收集app与小程序信息，然后查找对应icp备案</span><br></pre></td></tr></table></figure>
+
+<h2 id="网站关键信息收集："><a href="#网站关键信息收集：" class="headerlink" title="网站关键信息收集："></a>网站关键信息收集：</h2><ul>
+<li>目录扫描<ul>
+<li>dirsearch</li>
+<li>御剑</li>
+</ul>
+</li>
+<li>js扫描<ul>
+<li>FindSomething（浏览器扩展）</li>
+</ul>
+</li>
+<li>网站服务器收集<ul>
+<li>wappalyzer（浏览器扩展）</li>
+</ul>
+</li>
+<li>操作系统判断<ul>
+<li>TTL：0&lt;TTL&lt;64为Linux，64&lt;TTL&lt;128为windows</li>
+</ul>
+</li>
+</ul>
+<h2 id="IP收集"><a href="#IP收集" class="headerlink" title="IP收集"></a>IP收集</h2><ul>
+<li>域名查ip<ul>
+<li><a target="_blank" rel="noopener" href="https://site.ip138.com/">https://site.ip138.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://ipchaxun.com/">https://ipchaxun.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://ping.chinaz.com(多地ping)/">https://ping.chinaz.com（多地ping）</a></li>
+</ul>
+</li>
+<li>绕过CDN<ul>
+<li><a target="_blank" rel="noopener" href="https://ip.tool.chinaz.com/ipbatch%EF%BC%88%E6%89%B9%E9%87%8F%E6%9F%A5%E8%AF%A2ip%EF%BC%8CCDN">https://ip.tool.chinaz.com/ipbatch（批量查询ip，CDN</a> 流量收费高，所以很多站长可能只会对主站或者流量大的子站点做了 CDN，而很多小站子站点又跟主站在同一台服务器或者同一个C段内，此时就可以通过查询子域名对应的 IP 来辅助查找网站的真实IP)</li>
+<li><a target="_blank" rel="noopener" href="https://ping.sx/ping%EF%BC%88%E4%BB%8E%E5%9B%BD%E5%A4%96%E4%B8%8D%E5%90%8C%E5%9C%B0%E5%8C%BAping%EF%BC%89">https://ping.sx/ping（从国外不同地区ping）</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="—漏洞知识"><a href="#—漏洞知识" class="headerlink" title="—漏洞知识"></a>—漏洞知识</h1><h2 id="重放与并发"><a href="#重放与并发" class="headerlink" title="重放与并发"></a>重放与并发</h2><p>刷票，领优惠券，点赞</p>
+<p>重放与并发不同，两个都要尝试</p>
+<p><strong>并发插件：turbo-intruder-all.jar</strong></p>
+<ul>
+<li>将数据包发送到这个扩展</li>
+<li>添加请求头<code>red: %s</code></li>
+<li>选择<code>example/race.py</code>脚本，开始攻击</li>
+</ul>
+<h2 id="信息轰炸"><a href="#信息轰炸" class="headerlink" title="信息轰炸"></a>信息轰炸</h2><p><strong>插件：SMS_Bomb_Fuzzer-3.1.jar</strong></p>
+<ul>
+<li>将数据包发送到这个扩展</li>
+<li>自动测试各种绕过组合，如在电话号码前加空格</li>
+</ul>
+<h2 id="任意用户行为"><a href="#任意用户行为" class="headerlink" title="任意用户行为"></a>任意用户行为</h2><ul>
+<li>验证码可爆破</li>
+<li>敏感的验证码信息直接包含在API响应包中  —&gt;  拦截响应</li>
+<li>验证码修改为 **空 **或 **null **绕过</li>
+<li>手机验证码和手机号未绑定认证关系：<ul>
+<li>用自己手机号发送数据包</li>
+<li>拦截改密码的请求</li>
+<li>将号码修改为别人的</li>
+</ul>
+</li>
+<li>多账号发送验证码：（一次请求可以携带多个目标手机号，后端将为这些手机号生成（或复用）相同的验证码并发送）<ul>
+<li>拦截发送验证码的数据包</li>
+<li>修改数据包为如下形式发送，两个手机号同时收到相同的验证码</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">phone[]=13800138000,<span class="built_in">&amp;</span>phone[]=13800138011</span><br><span class="line">phone=13800138000,13800138011</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>猜测万能验证码</li>
+</ul>
+<h2 id="支付逻辑漏洞"><a href="#支付逻辑漏洞" class="headerlink" title="支付逻辑漏洞"></a>支付逻辑漏洞</h2><ul>
+<li>修改生成订单的请求包，可以改数量或金额（可改为负数）</li>
+<li>四舍五入漏洞：<ul>
+<li>充值0.019</li>
+<li>实际支付0.01</li>
+<li>实际到账0.02</li>
+</ul>
+</li>
+<li>整数溢出漏洞：当支付金额为2147483649时，支付金额就变成了2</li>
+<li>修改优惠券漏洞：<ul>
+<li>找到生成订单的数据包</li>
+<li>找到代表优惠券的参数，如 <code>coupon_id</code></li>
+<li>爆破参数id，寻找可用的优惠券</li>
+</ul>
+</li>
+<li>修改运费漏洞：修改生成订单的请求包</li>
+</ul>
+<h2 id="越权漏洞"><a href="#越权漏洞" class="headerlink" title="越权漏洞"></a>越权漏洞</h2><p>网站鉴权方式：cookie，请求头。不断删除请求头中的键值对来确定身份验证字段</p>
+<ul>
+<li>水平越权：<ul>
+<li>抓取查看数据的数据包，修改对应的ID值查看其他用户信息</li>
+</ul>
+</li>
+<li>垂直越权：<ul>
+<li>记录管理员删除用户的数据包请求参数，切换为普通用户构造数据包</li>
+<li>修改请求方式（put，post，get）绕过鉴权，例如响应中包含 <code>Request method &#39;GET&#39; not supported</code><ul>
+<li>将get请求发送到重放器</li>
+<li>右键改为 post</li>
+<li><code>Content-Type: application/x-www-form-urlencoded</code> 改为 <code>Content-Type: application/json</code></li>
+<li>给请求体加上 <code>&#123;&#125;</code></li>
+</ul>
+</li>
+<li>请求头伪造：网站在登陆之后服务器会返回一个认证标识，伪造认证标识有两个结果：<ul>
+<li>情况1：严格验证，我识别不了我直接不准你访问</li>
+<li>情况2：我不认识，但是我感觉你很牛逼，我就直接放行，你是最屌的，直接变成管理员</li>
+</ul>
+</li>
+<li>未授权访问漏洞：js文件泄露的接口未进行身份验证</li>
+</ul>
+</li>
+</ul>
+<h2 id="云安全密钥泄露漏洞（ak和sk）"><a href="#云安全密钥泄露漏洞（ak和sk）" class="headerlink" title="云安全密钥泄露漏洞（ak和sk）"></a>云安全密钥泄露漏洞（ak和sk）</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/3korHvaGhCvXhCI0qAi2nw">各大云 AccessKey 特征整理</a></p>
+<ul>
+<li>js文件泄露：bp中查找 <strong>AccessKeyId</strong> 和 <strong>AccessKeySecret</strong> ，找到后可登录（</li>
+<li>上传文件后的响应泄露</li>
+<li>小程序敏感信息泄露：<ul>
+<li>fine中配置<code>C:\Users\StarWhale\AppData\Roaming\Tencent\xwechat\radium\Applet\packages</code>寻找敏感信息</li>
+</ul>
+</li>
+<li>APP源码泄露<ul>
+<li>GDA反编译：把需要反编译的app拖入空白处即可自动反编译，并提取信息</li>
+<li>jadx-GUI反编译：只能反编译apk</li>
+</ul>
+</li>
+</ul>
+<h2 id="—云安全存储桶漏洞"><a href="#—云安全存储桶漏洞" class="headerlink" title="—云安全存储桶漏洞"></a>—云安全存储桶漏洞</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">StarWhale</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/09/18/yijing24/">http://example.com/2025/09/18/yijing24/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">StarWhale</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/10/08/ctf.yijinglab.com/" title="CTF-Web"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">CTF-Web</div></div><div class="info-2"><div class="info-item-1">— php:&#x2F;&#x2F;inputphp:&#x2F;&#x2F;input (在burpsuite把GET改成POST，然后请求体写php文件内容。如：&lt;?php system(&quot;ls /&quot;);?&gt;这种方法也可以在自己公网服务器上建立一个php文件内容为&lt;?php system(&quot;ls /&quot;);?&gt;，然后文件包含的参数使用公网文件） — .htaccess AddHandler：指定文件的处理程序  AddType：指定文件的MIME类型 123456789101112#define width 1337#define height 1337AddHandler application/x-httpd-php .jpg		#把.jpg文件用php解析#define     AddType application/x-httpd-php .jpg   ...</div></div></div></a><a class="pagination-related" href="/2025/09/06/NSSCTF-SQL/" title="SQL注入题记录"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">SQL注入题记录</div></div><div class="info-2"><div class="info-item-1">—334 题目直接把输入的密码直接与数据库中md5加密后的密码比较，所有直接爆破md5字符串即可 123456789101112131415161718192021222324252627282930#知识点1：观察以下查询，尤其是第三个。当比较字符串和数字时，MySQL会将字符串转换为数字进行比较,所以当输入password=0时能与数据库比较成功，在实战中可构造为：1&#x27;^(0)^&#x27;1#转换规则：#	字符串开头的数字会被转换为数字值#	如果字符串不以数字开头，则转换为0mysql&gt; select * from users where username=&#x27;Dumb&#x27; and password=&#x27;Dumb&#x27;;+----+----------+----------+| id | username | password |+----+----------+----------+|  1 | Dumb     | Dumb     |+----+----------+----------+1 row in set...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">StarWhale</div><div class="author-info-description">抬头看，满天星光甚烂漫；低头看，满路荆棘已过半</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>关注我</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94Kali%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">—Kali知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">命令相关：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">权限：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%EF%BC%9A"><span class="toc-number">1.3.</span> <span class="toc-text">下载：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%EF%BC%9A"><span class="toc-number">1.4.</span> <span class="toc-text">环境：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim%EF%BC%9A"><span class="toc-number">1.5.</span> <span class="toc-text">vim：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssh%E8%BF%9E%E6%8E%A5Kali%EF%BC%9A"><span class="toc-number">1.6.</span> <span class="toc-text">ssh连接Kali：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%EF%BC%9A"><span class="toc-number">1.7.</span> <span class="toc-text">docker：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E7%9F%A5%E8%AF%86"><span class="toc-number">2.</span> <span class="toc-text">—信息收集知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">状态码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#src%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">src：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%9F%E5%90%8D%EF%BC%9A"><span class="toc-number">2.3.</span> <span class="toc-text">域名：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%81%E4%B8%9A%E8%B5%84%E4%BA%A7%E6%94%B6%E9%9B%86%EF%BC%9A"><span class="toc-number">2.4.</span> <span class="toc-text">企业资产收集：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%AB%99%E5%85%B3%E9%94%AE%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%EF%BC%9A"><span class="toc-number">2.5.</span> <span class="toc-text">网站关键信息收集：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E6%94%B6%E9%9B%86"><span class="toc-number">2.6.</span> <span class="toc-text">IP收集</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">—漏洞知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E6%94%BE%E4%B8%8E%E5%B9%B6%E5%8F%91"><span class="toc-number">3.1.</span> <span class="toc-text">重放与并发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E8%BD%B0%E7%82%B8"><span class="toc-number">3.2.</span> <span class="toc-text">信息轰炸</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E8%A1%8C%E4%B8%BA"><span class="toc-number">3.3.</span> <span class="toc-text">任意用户行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.4.</span> <span class="toc-text">支付逻辑漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.5.</span> <span class="toc-text">越权漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%91%E5%AE%89%E5%85%A8%E5%AF%86%E9%92%A5%E6%B3%84%E9%9C%B2%E6%BC%8F%E6%B4%9E%EF%BC%88ak%E5%92%8Csk%EF%BC%89"><span class="toc-number">3.6.</span> <span class="toc-text">云安全密钥泄露漏洞（ak和sk）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%94%E4%BA%91%E5%AE%89%E5%85%A8%E5%AD%98%E5%82%A8%E6%A1%B6%E6%BC%8F%E6%B4%9E"><span class="toc-number">3.7.</span> <span class="toc-text">—云安全存储桶漏洞</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/04/computerOrg/" title="计算机组成原理">计算机组成原理</a><time datetime="2025-12-04T15:09:53.370Z" title="发表于 2025-12-04 23:09:53">2025-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/08/ctf.yijinglab.com/" title="CTF-Web">CTF-Web</a><time datetime="2025-10-08T09:53:55.564Z" title="发表于 2025-10-08 17:53:55">2025-10-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/18/yijing24/" title="蚁景">蚁景</a><time datetime="2025-09-18T13:13:33.089Z" title="发表于 2025-09-18 21:13:33">2025-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/06/NSSCTF-SQL/" title="SQL注入题记录">SQL注入题记录</a><time datetime="2025-09-06T07:25:23.132Z" title="发表于 2025-09-06 15:25:23">2025-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/13/Linux/" title="Linux">Linux</a><time datetime="2025-08-13T06:02:34.541Z" title="发表于 2025-08-13 14:02:34">2025-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By StarWhale</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

