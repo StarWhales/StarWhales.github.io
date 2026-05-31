@@ -924,7 +924,7 @@
 
 <h3 id="1-php-input"><a href="#1-php-input" class="headerlink" title="(1)php:&#x2F;&#x2F;input"></a>(1)php:&#x2F;&#x2F;input</h3><p>前提条件：php.ini文件中的allow_url_include设置为On</p>
 <p>?file&#x3D;php:&#x2F;&#x2F;input，然后直接post木马代码</p>
-<style>.zuedirkdocyj{zoom: 67%;}</style><img src="/2025/09/18/yijing24/1.png" class="zuedirkdocyj">
+<style>.ewdztyikufsu{zoom: 67%;}</style><img src="/2025/09/18/yijing24/1.png" class="ewdztyikufsu">
 
 <h3 id="2-data"><a href="#2-data" class="headerlink" title="(2)data:&#x2F;&#x2F;"></a>(2)data:&#x2F;&#x2F;</h3><p>前提条件：php.ini文件中的allow_url_include设置为On</p>
 <p>格式：</p>
@@ -1160,7 +1160,7 @@
 <h1 id="—组件，框架漏洞"><a href="#—组件，框架漏洞" class="headerlink" title="—组件，框架漏洞"></a>—组件，框架漏洞</h1><h2 id="Apache-Shiro-550漏洞"><a href="#Apache-Shiro-550漏洞" class="headerlink" title="Apache Shiro-550漏洞"></a>Apache Shiro-550漏洞</h2><p>在Apache shiro的框架中，执行身份验证时提供了一个记住密码的功能（RememberMe），如果用户登录时勾选了这个选项。用户的请求数据包中将会在cookie字段多出一段数据，这一段数据包含了用户的身份信息，且是经过加密的。加密的过程是：用户信息&#x3D;&gt;序列化&#x3D;&gt;AES加密（这一步需要用密钥key）&#x3D;&gt;base64编码&#x3D;&gt;添加到RememberMe Cookie字段。勾选记住密码之后，下次登录时，服务端会根据客户端请求包中的cookie值进行身份验证，无需登录即可访问。服务端进行对cookie进行验证的步骤就是：取出请求中rememberMe的cookie值 &#x3D;&gt; Base64解码&#x3D;&gt;AES解密（用到密钥key）&#x3D;&gt;反序列化</p>
 <p>因此攻击者只要找到AES加密的密钥，就可以构造一个恶意对象，对其进行序列化–&gt;AES加密–&gt;Base64编码，然后将其作为cookie的rememberMe字段发送，Shiro将rememberMe进行解密并且反序列化，最终造成反序列化漏洞</p>
 <p>查看响应包头部是否有Set-Cookie: rememberMe&#x3D;deleteMe（可以手动在请求包的Cookie处添加rememberMe&#x3D;1），出现rememberMe&#x3D;deleteMe字段仅仅能说明登录页面采用了shiro进行了身份验证而已，并非就说明100%存在漏洞</p>
-<style>.hbfmyxxlboma{zoom: 25%;}</style><img src="/2025/09/18/yijing24/2.png" class="hbfmyxxlboma">
+<style>.mbvfpkxzwceq{zoom: 25%;}</style><img src="/2025/09/18/yijing24/2.png" class="mbvfpkxzwceq">
 
 <p>用shiro的java工具一键爆破密钥和rce</p>
 <h2 id="SpringBoot-Actuator未授权漏洞"><a href="#SpringBoot-Actuator未授权漏洞" class="headerlink" title="SpringBoot Actuator未授权漏洞"></a>SpringBoot Actuator未授权漏洞</h2><p>本质上是目录扫描。1版本的默认路由是&#x2F;，2版本是&#x2F;actuator。</p>
@@ -1292,7 +1292,7 @@
 
 <h3 id="Teleport"><a href="#Teleport" class="headerlink" title="Teleport"></a>Teleport</h3><p>登录页面输入正确的验证码，将登录数据包发到重放器</p>
 <p>修改请求体如下：（其中password改为null不要加引号，captcha为当前页面的验证码）</p>
-<style>.mmxgjrrqoimy{zoom: 25%;}</style><img src="/2025/09/18/yijing24/7.png" class="mmxgjrrqoimy">
+<style>.trpohiagrmxd{zoom: 25%;}</style><img src="/2025/09/18/yijing24/7.png" class="trpohiagrmxd">
 
 <p>出现如图响应即登录成功</p>
 <p>接下来刷新页面可进入&#x2F;dashboard拿到管理员权限</p>
@@ -1308,7 +1308,7 @@
 <h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xray_windows_amd64.exe webscan --listen <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">7777</span> --html-output &quot;E:\桌面\···.···...····· ·....· ··.·....·..··.. ·..·.···.··...·.·..·\··..·.··....··· ··.·....··...·· ·..·\xray\代理\vulnweb.com.html&quot;</span><br></pre></td></tr></table></figure>
 
 <h4 id="联动BP"><a href="#联动BP" class="headerlink" title="联动BP"></a>联动BP</h4><p>开启xray的代理，并且配置bp的上游代理服务器</p>
-<style>.ugmrlifeprhp{zoom: 33%;}</style><img src="/2025/09/18/yijing24/6.png" class="ugmrlifeprhp">
+<style>.gmjnkfvxbxfg{zoom: 33%;}</style><img src="/2025/09/18/yijing24/6.png" class="gmjnkfvxbxfg">
 
 <h2 id="goby"><a href="#goby" class="headerlink" title="goby"></a>goby</h2><ul>
 <li>需安装npcap</li>
