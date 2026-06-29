@@ -1,0 +1,616 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>密码学 | StarWhale</title><meta name="author" content="StarWhale"><meta name="copyright" content="StarWhale"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="先加密再签名的危害偷取A的消息，用自己的名义转发给B 签名没有被加密保护，攻击者提前把自己的公钥发给你，然后替换签名，替换身份（而非冒充，因为把公钥给你的时候你就记录了这个公钥是谁的） 仿射密码：加密：E(x)&#x3D;(a⋅x + b) mod 26解密：D(y)&#x3D;a^−1⋅(y−b) mod 26x：明文y：密文a：乘法密钥，与26互素b：加法密钥，0~25的整数 分组密码与流密码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学">
+<meta property="og:url" content="http://example.com/2026/06/27/KeyBase/index.html">
+<meta property="og:site_name" content="StarWhale">
+<meta property="og:description" content="先加密再签名的危害偷取A的消息，用自己的名义转发给B 签名没有被加密保护，攻击者提前把自己的公钥发给你，然后替换签名，替换身份（而非冒充，因为把公钥给你的时候你就记录了这个公钥是谁的） 仿射密码：加密：E(x)&#x3D;(a⋅x + b) mod 26解密：D(y)&#x3D;a^−1⋅(y−b) mod 26x：明文y：密文a：乘法密钥，与26互素b：加法密钥，0~25的整数 分组密码与流密码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/%E4%BB%99%E5%B0%8A.jpg">
+<meta property="article:published_time" content="2026-06-27T08:43:01.862Z">
+<meta property="article:modified_time" content="2026-06-29T11:20:51.339Z">
+<meta property="article:author" content="StarWhale">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/%E4%BB%99%E5%B0%8A.jpg"><link rel="shortcut icon" href="/img/%E4%BB%99%E5%B0%8A.jpg"><link rel="canonical" href="http://example.com/2026/06/27/KeyBase/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.2.2"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '密码学',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/%E4%BB%99%E5%B0%8A.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/%E4%BB%99%E5%B0%8A.jpg" alt="Logo"><span class="site-name">StarWhale</span></a><a class="nav-page-title" href="/"><span class="site-name">密码学</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 目录</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我们</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">密码学</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-06-27T08:43:01.862Z" title="发表于 2026-06-27 16:43:01">2026-06-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-06-29T11:20:51.339Z" title="更新于 2026-06-29 19:20:51">2026-06-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="先加密再签名的危害"><a href="#先加密再签名的危害" class="headerlink" title="先加密再签名的危害"></a>先加密再签名的危害</h1><p><strong>偷取A的消息，用自己的名义转发给B</strong></p>
+<p>签名没有被加密保护，攻击者提前把自己的公钥发给你，然后替换签名，替换身份（而非冒充，因为把公钥给你的时候你就记录了这个公钥是谁的）</p>
+<h1 id="仿射密码："><a href="#仿射密码：" class="headerlink" title="仿射密码："></a>仿射密码：</h1><p>加密：E(x)&#x3D;(a⋅x + b) mod 26<br>解密：D(y)&#x3D;a^−1⋅(y−b) mod 26<br>x：明文<br>y：密文<br>a：乘法密钥，与26互素<br>b：加法密钥，0~25的整数<br><img src="KeyBase\1.png" style="zoom: 80%;" /></p>
+<h1 id="分组密码与流密码"><a href="#分组密码与流密码" class="headerlink" title="分组密码与流密码"></a>分组密码与流密码</h1><p>分组密码：将明文分成固定长度的组，用相同的算法和密钥序列对每组加密到固定长度的密文</p>
+<p>流密码：又称序列密码，每次加密1比特或1字节</p>
+<h1 id="混淆与扩散"><a href="#混淆与扩散" class="headerlink" title="混淆与扩散"></a>混淆与扩散</h1><p>扩散是雪崩效应，混淆是无法通过分析手段推断</p>
+<p><strong>混淆</strong>：让<strong>密钥</strong>和<strong>密文</strong>之间的关系变得极其复杂，看不懂。</p>
+<p><strong>扩散</strong>：让<strong>明文</strong>和<strong>密文</strong>之间的关系变得极其复杂，牵一发而动全身。</p>
+<h1 id="DES加密-64bit-8不同S盒"><a href="#DES加密-64bit-8不同S盒" class="headerlink" title="DES加密(64bit,8不同S盒)"></a>DES加密(64bit,8不同S盒)</h1><img src="KeyBase\2.png" style="zoom: 50%;" />
+
+<ol>
+<li>64位明文，IP置换，有一张固定的表</li>
+<li>16轮迭代，F轮函数：<ul>
+<li>E扩展：Lᵢ和Rᵢ，把32位Rᵢ扩展成48位，即分为8组，邻组头尾相接</li>
+<li>与密钥异或</li>
+<li>S盒压缩：对于8组6bit数据，前后2bit组成行，中间4bit组成列，在S盒查询，6-&gt;4，8组数据依次用8个S盒</li>
+<li>P盒置换：16次用同一张表</li>
+<li>左半 Lᵢ &#x3D; Rᵢ₋₁<br>右半 Rᵢ &#x3D; Lᵢ₋₁ ⊕ F(Rᵢ₋₁, Kᵢ)</li>
+</ul>
+</li>
+<li>IP逆置换</li>
+<li>密钥扩展：<ul>
+<li>64位初始密钥分为8组，PC-1置换（去掉每一组最后一位校验位，然后打乱顺序分为左C右D各28位）</li>
+<li>左移生成共16个子密钥，第 1、2、9、16 轮移 1 位，其他轮移 2 位。</li>
+</ul>
+</li>
+</ol>
+<img src="KeyBase\3.png" style="zoom: 50%;" />
+
+<h2 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h2><img src="KeyBase\100.png" style="zoom: 33%;" />
+
+<p>构造Y &#x3D; 0FFFFFFFFFFFFFFF（Y &#x3D; X），搭配对应S，让X∣∣S按 16 位分组后的分组序列与Y∣∣X完全一致。</p>
+<h1 id="AES加密-128bit-相同S盒"><a href="#AES加密-128bit-相同S盒" class="headerlink" title="AES加密(128bit,相同S盒)"></a>AES加密(128bit,相同S盒)</h1><p>基于SPN代换置换网络</p>
+<p>AES 类型	主密钥长度	轮数	轮密钥数量	每个轮密钥大小<br>AES-128	128 位		10		11 个		128 位<br>AES-192	192 位		12		13 个		128 位<br>AES-256	256 位		14		15 个		128 位</p>
+<img src="KeyBase\4.png" style="zoom: 33%;" />
+
+<ol>
+<li><p>初始变换：16字节矩阵与16字节子密钥异或，子密钥有 轮数+1 个</p>
+</li>
+<li><p>10轮循环：</p>
+<ul>
+<li>字节代换：比如第一个字节是19，那就用S盒第1行第9列数据代换</li>
+<li>行移位：16字节矩阵有4行，第 i 行左移 i-1 位</li>
+<li>列混合：左乘一个固定矩阵，不是传统矩阵乘法<strong>（最后一轮不做这一步）</strong></li>
+<li>轮密钥加：与子密钥异或</li>
+</ul>
+</li>
+<li><p>密钥扩展：</p>
+<p>密钥编排算法是面向字的(一个字由4个字节，32比特)。每个轮密钥由4个字组成。扩展密钥共44个字，表示为w[0],…,w[43]</p>
+<p>当 i 不是 4 的倍数：W[i] &#x3D; W[i - 4] ⊕ W[i - 1]</p>
+<p>当 i 是 4 的倍数：W[i] &#x3D; W[i - 4] ⊕ T(W[i - 1])</p>
+</li>
+</ol>
+<img src="KeyBase\5.png" style="zoom: 80%;" />
+
+<h1 id="公钥体制"><a href="#公钥体制" class="headerlink" title="公钥体制"></a>公钥体制</h1><img src="KeyBase\6.png" style="zoom: 40%;" />
+
+<h1 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h1><p>公钥和私钥制作过程：</p>
+<ul>
+<li>选两个<strong>质数 p，q，公钥 e</strong></li>
+<li>公钥和私钥里相同的数字N &#x3D; p * q</li>
+<li>欧拉函数T &#x3D; (p - 1) * (q - 1)</li>
+<li>公钥E &#x3D; (e, N)：<ul>
+<li>质数</li>
+<li>1 &lt; e &lt; T</li>
+<li>e不是T的因子</li>
+</ul>
+</li>
+<li>算私钥D &#x3D; (d, N)<ul>
+<li>(d * e) % T &#x3D; 1</li>
+</ul>
+</li>
+</ul>
+<p>加密解密过程：（假设公钥为(<strong>7</strong>, 33)，私钥为(<strong>3</strong>, 33)，加密的数据为15，即N &#x3D; 33, e &#x3D; 7, d &#x3D; 3）</p>
+<ul>
+<li>加密：<ul>
+<li>15的7次方为170859375</li>
+<li>170859375 % 33 &#x3D; 27</li>
+</ul>
+</li>
+<li>解密：<ul>
+<li>27的3次方为19683</li>
+<li>19683 % 33 &#x3D; 15</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">已知：</span></span><br><span class="line"><span class="string">p = 1325465431</span></span><br><span class="line"><span class="string">q = 152317153</span></span><br><span class="line"><span class="string">e = 65537</span></span><br><span class="line"><span class="string">解密步骤：</span></span><br><span class="line"><span class="string">T = (p - 1) * (q - 1)</span></span><br><span class="line"><span class="string">N = p * q</span></span><br><span class="line"><span class="string">d * e % T = 1算出d</span></span><br><span class="line"><span class="string">x ^ d % N解密</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">d = <span class="built_in">pow</span>(e, -<span class="number">1</span>, phi_n)  <span class="comment"># 等效于 d ≡ e^(-1) mod φ(n)</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="离散对数"><a href="#离散对数" class="headerlink" title="离散对数"></a>离散对数</h1><p>给定一个素数 p，以及一个整数 g（称为本原根或生成元），<br>对于任意整数 y（1 ≤ y ≤ p-1），<br>求解唯一的整数 x（0 ≤ x ≤ p-2），<br>使得：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g<span class="built_in">^</span>x ≡ y (mod p)</span><br></pre></td></tr></table></figure>
+
+<p>这里的 x 就称为“以 g 为底 y 的离散对数”。</p>
+<h1 id="ElGamal密码体制"><a href="#ElGamal密码体制" class="headerlink" title="ElGamal密码体制"></a>ElGamal密码体制</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">大素数p</span><br><span class="line">原根g</span><br><span class="line">私钥x</span><br><span class="line">随机数k</span><br><span class="line">明文m</span><br><span class="line"></span><br><span class="line">公钥计算：</span><br><span class="line">y = g<span class="built_in">^</span>x mod p</span><br><span class="line">(y, g, p)</span><br><span class="line"></span><br><span class="line">加密：</span><br><span class="line">c1 = g<span class="built_in">^</span>k mod p</span><br><span class="line">c2 = m·y<span class="built_in">^</span>k mod p</span><br><span class="line">m -&gt; (c1, c2)</span><br><span class="line"></span><br><span class="line">解密：</span><br><span class="line">m = c2·(c1<span class="built_in">^</span>x)<span class="built_in">^</span>-1 mod p</span><br></pre></td></tr></table></figure>
+
+<h1 id="椭圆曲线密码体制（ECC）"><a href="#椭圆曲线密码体制（ECC）" class="headerlink" title="椭圆曲线密码体制（ECC）"></a>椭圆曲线密码体制（ECC）</h1><img src="KeyBase\7.png" style="zoom: 50%;" />
+
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">p			大素数</span><br><span class="line">Ep(a, b)	满足椭圆曲线同余方程的全部有限坐标点 (x,y) + 无穷远点 O 构成的整体集合</span><br><span class="line">			Ep(-1, 188) -&gt; y<span class="built_in">^</span>2 ≡ x<span class="built_in">^</span>3 -x + 188 mod p</span><br><span class="line">G			基点</span><br><span class="line">nA			私钥</span><br><span class="line">PA = nA·G	公钥</span><br><span class="line">k			随机数</span><br><span class="line">m			明文</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>把明文数字 m 转换成椭圆曲线上一个点 Pm（明文嵌入，把数字映射成曲线上坐标点）</li>
+<li>B 随便选一个临时随机整数 k（一次性使用，用完丢弃）</li>
+<li>计算两个点，拼成密文对 Cm &#x3D; (kG, Pm + kPA)<ul>
+<li>第一个分量：C1 &#x3D; kG</li>
+<li>第二个分量：C2 &#x3D; Pm + k⋅PA</li>
+</ul>
+</li>
+<li>B 把 (C1, C2) 发给 A</li>
+</ol>
+<img src="KeyBase\8.png" style="zoom: 33%;" />
+
+<h1 id="Hash函数"><a href="#Hash函数" class="headerlink" title="Hash函数"></a>Hash函数</h1><p>Hash函数是一个将任意长度的消息（message）映射成固定长度消息的函数。</p>
+<p>哈希碰撞</p>
+<p>生日攻击法：假设哈希输出总共有 2^n 种不同取值（n 为哈希比特长度），当你生成大约 2^n&#x2F;2 条不同消息并计算哈希值时，出现<strong>哈希碰撞（两条不同消息哈希结果一模一样）</strong>的概率约 63%。</p>
+<h1 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h1><ol>
+<li>增加填充位：<ul>
+<li>在原始消息二进制末尾，<strong>先强制补一个二进制 <code>1</code></strong></li>
+<li>继续往后补二进制 <code>0</code>，直到整体长度模 512 等于 448</li>
+<li>最少填充 1 位，最多填充 512 位</li>
+</ul>
+</li>
+<li>附加原始消息长度<ul>
+<li>统计<strong>原始消息的二进制总位数</strong>，把这个数字转为<strong>64 位二进制数</strong></li>
+<li>将这 64 位拼接在步骤 1 填充完成的消息最末尾</li>
+</ul>
+</li>
+<li>初始化 MD5 缓冲区<ul>
+<li>A &#x3D; 0x67452301</li>
+<li>B &#x3D; 0xEFCDAB89</li>
+<li>C &#x3D; 0x98BADCFE</li>
+<li>D &#x3D; 0x10325476</li>
+</ul>
+</li>
+<li>分组循环压缩：<ul>
+<li>我们现在手里是<strong>1 个 512 比特的分组</strong></li>
+<li>把这 512 位平均分：512÷32&#x3D;16 份，记为 M0~M15</li>
+<li>把当前全局的四个寄存器 <code>A、B、C、D</code> 复制保存一份，记为 CVi &#x3D; (A0, B0, C0, D0)</li>
+<li>A &#x3D; A + F&#x2F;G&#x2F;H&#x2F;I 运算结果 + 分组字 Mj + 常数 T[i] mod 2^32，依次使用F、G、H、I四种非线性函数运算，每一种16次<br>+ </li>
+<li>A&#x2F;B&#x2F;C&#x2F;D新 &#x3D; A&#x2F;B&#x2F;C&#x2F;D迭代完 + A0&#x2F;B0&#x2F;C0&#x2F;D0 mod 2^32</li>
+<li>叠加后的新 ABCD，作为<strong>下一个 512bit 分组的初始寄存器值</strong>，进入下一组运算</li>
+<li>所有 512bit 的分组运算结束后拼接ABCD转 32 位十六进制字符串即为哈希值</li>
+</ul>
+</li>
+</ol>
+<h1 id="SHA"><a href="#SHA" class="headerlink" title="SHA"></a>SHA</h1><p>SHA-1与MD5的不同处：</p>
+<ul>
+<li><p>MD5：输出 <strong>128 位（16 字节）</strong>，4个初始值，4轮16次迭代</p>
+</li>
+<li><p>SHA-1：输出 <strong>160 位（20 字节）</strong>，5个初始值，4轮20次迭代</p>
+</li>
+</ul>
+<p>SHA-224、SHA-256、SHA-384 和 SHA-512 并称 SHA-2</p>
+<p>Keccak(基于海绵结构) -&gt; SHA-3</p>
+<h1 id="消息认证码-MAC"><a href="#消息认证码-MAC" class="headerlink" title="消息认证码 MAC"></a>消息认证码 MAC</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">明文x，密钥k，消息认证码hk</span><br><span class="line">hk由x和k得到，</span><br><span class="line">且不可逆</span><br></pre></td></tr></table></figure>
+
+<h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">明文x0，私钥k1，公钥k2，密钥k3</span><br><span class="line">发送：</span><br><span class="line">RSA0 = RSAk1(h(x0))</span><br><span class="line">X = Ek3(x0||RSA0)</span><br><span class="line">接收</span><br><span class="line">Dk3(X) -&gt; x1||RSA1</span><br><span class="line">然后验证</span><br><span class="line">h(x1)与RSAk2(RSA1)是否相等</span><br></pre></td></tr></table></figure>
+
+<h1 id="Lamport-一次性签名"><a href="#Lamport-一次性签名" class="headerlink" title="Lamport 一次性签名"></a>Lamport 一次性签名</h1><p>例子：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">私钥:前一个数字为第 i 位，后一个数字为第 i 位的 值</span><br><span class="line">取</span><br><span class="line">y1,0 = 5831</span><br><span class="line">y1,1 = 735</span><br><span class="line">y2,0 = 803</span><br><span class="line">y2,1 = 2467</span><br><span class="line">y3,0 = 4285</span><br><span class="line">y3,1 = 6449</span><br><span class="line"></span><br><span class="line">定义f(x) = 3<span class="built_in">^</span>x mod 7879</span><br><span class="line"></span><br><span class="line">算公钥：</span><br><span class="line">z1,0= f(y1,0)=3<span class="built_in">^</span>5831 =2009 mod 7879</span><br><span class="line">z1,1=3810</span><br><span class="line">z2,0=4672</span><br><span class="line">z2,1=4721</span><br><span class="line">z3,0=268</span><br><span class="line">z3,1=573</span><br><span class="line"></span><br><span class="line">对消息011用私钥签名为：</span><br><span class="line">(4285，2467，735)</span><br><span class="line"></span><br><span class="line">接收方验算：</span><br><span class="line">3<span class="built_in">^</span>735 mod 7879=3810</span><br><span class="line">3<span class="built_in">^</span>2464 mod 7879=4721</span><br><span class="line">3<span class="built_in">^</span>4285 mod 7879=268</span><br><span class="line"></span><br><span class="line">得到011</span><br></pre></td></tr></table></figure>
+
+<h1 id="盲签名"><a href="#盲签名" class="headerlink" title="盲签名"></a>盲签名</h1><p>盲化函数f<br>脱盲函数g<br>满足</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g(SB(f(m)))=SB(m)</span><br></pre></td></tr></table></figure>
+
+<h1 id="DSS，DSA-vs-RSA"><a href="#DSS，DSA-vs-RSA" class="headerlink" title="DSS，DSA vs RSA"></a>DSS，DSA vs RSA</h1><p>DSS 是标准，DSA 是该标准规定使用的签名算法</p>
+<table>
+<thead>
+<tr>
+<th align="center">对比项</th>
+<th align="center">RSA</th>
+<th align="center">DSA</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">用途</td>
+<td align="center">既可签名、也可加密</td>
+<td align="center"><strong>只能签名，不能加密</strong></td>
+</tr>
+<tr>
+<td align="center">数学难题</td>
+<td align="center">大整数分解</td>
+<td align="center">离散对数</td>
+</tr>
+<tr>
+<td align="center">同消息签名</td>
+<td align="center">结果固定</td>
+<td align="center">随机k，每次签名不同</td>
+</tr>
+<tr>
+<td align="center">速度</td>
+<td align="center">签名慢、验签快</td>
+<td align="center">签名快、验签慢</td>
+</tr>
+<tr>
+<td align="center">签名形式</td>
+<td align="center">单个数值</td>
+<td align="center">二元组 (r,s)</td>
+</tr>
+</tbody></table>
+<h1 id="PGP"><a href="#PGP" class="headerlink" title="PGP"></a>PGP</h1><p>安全电子邮件加密系统</p>
+<p>发送方：</p>
+<ul>
+<li>原始消息 MD5</li>
+<li>己方 RSA 私钥签名</li>
+<li>邮件原文 + 签名 一起进行 ZIP 压缩</li>
+<li>生成 IDEA 随机密钥加密邮件压缩包(对称加密)</li>
+<li>对方 RSA 公钥加密 IDEA 密钥</li>
+<li>把加密邮件||加密的 IDEA 密钥打包发送</li>
+<li>base64编码</li>
+</ul>
+<p>接收方：</p>
+<ul>
+<li>base64解码</li>
+<li>己方 RSA 私钥解密后半部分得到 IDEA 密钥</li>
+<li>用  IDEA 密钥解密邮件得到压缩包</li>
+<li>解压得到邮件原文 + 签名</li>
+<li>用对方 RSA 公钥验证签名</li>
+</ul>
+<h1 id="密钥管理"><a href="#密钥管理" class="headerlink" title="密钥管理"></a>密钥管理</h1><img src="KeyBase\9.png" style="zoom: 50%;" />
+
+<img src="KeyBase\10.png" style="zoom: 50%;" />
+
+<h1 id="Diffie-Hellman密钥交换协议-DH-KEP"><a href="#Diffie-Hellman密钥交换协议-DH-KEP" class="headerlink" title="Diffie-Hellman密钥交换协议(DH-KEP)"></a>Diffie-Hellman密钥交换协议(DH-KEP)</h1><p>全世界第一个公钥体系密钥协商协议</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">核心原理：</span><br><span class="line">(g<span class="built_in">^</span>a mod p)<span class="built_in">^</span>b mod p = (g<span class="built_in">^</span>b mod p)<span class="built_in">^</span>a mod p = g<span class="built_in">^</span>(ab) mod p</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Alice &lt;-&gt; Bob:</span><br><span class="line"></span><br><span class="line">公开p, g</span><br><span class="line"></span><br><span class="line">Alice随机私钥a</span><br><span class="line">Bob随机私钥b</span><br><span class="line"></span><br><span class="line">Alice公钥A = g<span class="built_in">^</span>a mod p</span><br><span class="line">Bob公钥B = g<span class="built_in">^</span>b mod p</span><br><span class="line"></span><br><span class="line">Alice算B<span class="built_in">^</span>a得到共享会话密钥 K </span><br><span class="line">Bob算A<span class="built_in">^</span>b得到共享会话密钥 K </span><br></pre></td></tr></table></figure>
+
+<h1 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h1><ul>
+<li>认证中心CA(核心)</li>
+<li>证书库</li>
+<li>Web安全通信平台</li>
+<li>RA注册审核机构等</li>
+</ul>
+<img src="KeyBase\11.png" style="zoom: 40%;" />
+
+<h1 id="Shamir门限秘密共享"><a href="#Shamir门限秘密共享" class="headerlink" title="Shamir门限秘密共享"></a>Shamir门限秘密共享</h1><p>(t,n) 门限方案：<br>把一个总秘密k，拆分成n份子秘密（影子密钥），分给n个人保管，满足两条规则：</p>
+<ul>
+<li>凑齐 ≥ t 份子秘密：就能完整还原出原始总秘密k;</li>
+<li>拿到 &lt; t 份子秘密：无法算出、推导出原始秘密k。t叫做门限值。</li>
+</ul>
+<p>Shamir (t, n)门限(t - 1 次函数，子秘密分给 n 个人，1 &lt;&#x3D; t &lt;&#x3D; n)</p>
+<p>利用 t - 1 次多项式唯一确定性：</p>
+<ul>
+<li>一个 t − 1 次多项式，必须至少 t 个不同坐标点才能唯一确定；</li>
+<li>少于 t 个点，存在无穷多个多项式满足这些点，无法解出原始秘密；</li>
+<li>把<strong>原始秘密设为多项式常数项</strong>，拆分多项式上 n 个点作为子秘密分发；<br>刚好实现 (t,n) 门限特性。</li>
+</ul>
+<img src="KeyBase\12.png" style="zoom: 50%;" />
+
+<img src="KeyBase\13.png" style="zoom: 50%;" />
+
+
+
+<img src="KeyBase\14.png" style="zoom: 80%;" />
+
+<img src="KeyBase\15.png" style="zoom: 80%;" />
+
+<img src="KeyBase\16.png" style="zoom: 80%;" />
+
+<img src="KeyBase\17.png" style="zoom: 80%;" />
+
+<img src="KeyBase\18.png" style="zoom: 80%;" />
+
+<img src="KeyBase\19.png" style="zoom: 80%;" />
+
+<img src="KeyBase\20.png" style="zoom: 80%;" />
+
+<img src="KeyBase\21.png" style="zoom: 80%;" />
+
+<img src="KeyBase\22.png" style="zoom: 80%;" />
+
+<img src="KeyBase\23.png" style="zoom: 80%;" />
+
+<img src="KeyBase\24.png" style="zoom: 80%;" />
+
+<img src="KeyBase\25.png" style="zoom: 80%;" />
+
+<img src="KeyBase\26.png" style="zoom: 80%;" />
+
+<img src="KeyBase\27.png" style="zoom: 80%;" />
+
+<img src="KeyBase\28.png" style="zoom: 80%;" />
+
+<img src="KeyBase\29.png" style="zoom: 80%;" />
+
+<img src="KeyBase\30.png" style="zoom: 80%;" />
+
+<img src="KeyBase\31.png" style="zoom: 80%;" />
+
+<img src="KeyBase\32.png" style="zoom: 80%;" />
+
+<img src="KeyBase\33.png" style="zoom: 80%;" />
+
+<img src="KeyBase\34.png" style="zoom: 80%;" />
+
+<img src="KeyBase\35.png" style="zoom: 80%;" />
+
+<img src="KeyBase\36.png" style="zoom: 80%;" />
+
+<img src="KeyBase\37.png" style="zoom: 80%;" />
+
+<img src="KeyBase\38.png" style="zoom: 80%;" />
+
+<img src="KeyBase\39.png" style="zoom: 80%;" />
+
+<img src="KeyBase\40.png" style="zoom: 80%;" />
+
+<img src="KeyBase\41.png" style="zoom: 80%;" />
+
+<img src="KeyBase\42.png" style="zoom: 80%;" />
+
+<img src="KeyBase\43.png" style="zoom: 80%;" />
+
+<img src="KeyBase\44.png" style="zoom: 80%;" />
+
+<img src="KeyBase\45.png" style="zoom: 80%;" />
+
+<img src="KeyBase\46.png" style="zoom: 80%;" />
+
+<img src="KeyBase\47.png" style="zoom: 80%;" />
+
+<img src="KeyBase\48.png" style="zoom: 80%;" />
+
+<img src="KeyBase\49.png" style="zoom: 80%;" />
+
+<img src="KeyBase\50.png" style="zoom: 80%;" />
+
+<img src="KeyBase\51.png" style="zoom: 80%;" />
+
+<img src="KeyBase\52.png" style="zoom: 80%;" />
+
+<img src="KeyBase\53.png" style="zoom: 80%;" />
+
+<img src="KeyBase\54.png" style="zoom: 80%;" />
+
+<img src="KeyBase\55.png" style="zoom: 80%;" />
+
+<img src="KeyBase\56.png" style="zoom: 80%;" />
+
+<img src="KeyBase\57.png" style="zoom: 80%;" />
+
+<img src="KeyBase\58.png" style="zoom: 80%;" />
+
+<img src="KeyBase\59.png" style="zoom: 80%;" />
+
+<img src="KeyBase\60.png" style="zoom: 80%;" />
+
+<img src="KeyBase\61.png" style="zoom: 80%;" />
+
+<img src="KeyBase\62.png" style="zoom: 80%;" />
+
+<img src="KeyBase\63.png" style="zoom: 80%;" />
+
+<img src="KeyBase\64.png" style="zoom: 80%;" />
+
+<img src="KeyBase\65.png" style="zoom: 80%;" />
+
+<img src="KeyBase\66.png" style="zoom: 80%;" />
+
+<img src="KeyBase\67.png" style="zoom: 80%;" />
+
+<img src="KeyBase\68.png" style="zoom: 80%;" />
+
+<img src="KeyBase\69.png" style="zoom: 80%;" />
+
+<img src="KeyBase\70.png" style="zoom: 80%;" />
+
+<img src="KeyBase\71.png" style="zoom: 80%;" />
+
+<img src="KeyBase\72.png" style="zoom: 80%;" />
+
+<img src="KeyBase\73.png" style="zoom: 80%;" />
+
+<img src="KeyBase\74.png" style="zoom: 80%;" />
+
+<img src="KeyBase\75.png" style="zoom: 80%;" />
+
+<img src="KeyBase\76.png" style="zoom: 80%;" />
+
+<img src="KeyBase\77.png" style="zoom: 80%;" />
+
+<img src="KeyBase\78.png" style="zoom: 80%;" />
+
+<img src="KeyBase\79.png" style="zoom: 80%;" />
+
+<img src="KeyBase\80.png" style="zoom: 80%;" />
+
+<img src="KeyBase\81.png" style="zoom: 80%;" />
+
+<img src="KeyBase\82.png" style="zoom: 80%;" />
+
+<img src="KeyBase\83.png" style="zoom: 80%;" />
+
+<img src="KeyBase\84.png" style="zoom: 80%;" />
+
+<img src="KeyBase\85.png" style="zoom: 80%;" />
+
+<img src="KeyBase\86.png" style="zoom: 80%;" />
+
+<img src="KeyBase\87.png" style="zoom: 80%;" />
+
+<img src="KeyBase\88.png" style="zoom: 80%;" />
+
+<img src="KeyBase\89.png" style="zoom: 80%;" />
+
+<img src="KeyBase\90.png" style="zoom: 80%;" />
+
+<img src="KeyBase\91.png" style="zoom: 80%;" />
+
+<img src="KeyBase\92.png" style="zoom: 80%;" />
+
+<img src="KeyBase\93.png" style="zoom: 80%;" />
+
+<img src="KeyBase\94.png" style="zoom: 80%;" />
+
+<img src="KeyBase\95.png" style="zoom: 80%;" />
+
+<img src="KeyBase\96.png" style="zoom: 80%;" />
+
+<img src="KeyBase\97.png" style="zoom: 80%;" />
+
+<img src="KeyBase\98.png" style="zoom: 80%;" /></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">StarWhale</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2026/06/27/KeyBase/">http://example.com/2026/06/27/KeyBase/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">StarWhale</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/%E4%BB%99%E5%B0%8A.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.4/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/06/07/src/" title="SRC思路"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">SRC思路</div></div><div class="info-2"><div class="info-item-1">—GoogleHacking高级搜索语法：  intext:正文 intitle: allintitle: inurl: link: xxx.com        &#x2F;&#x2F;代替403站点扫目录 info: xxx.com         site: xxx.com        &#x2F;&#x2F;子域名收集  —ARL灯塔1.指纹添加：直接用脚本 2.字典内容追加： 1234567891011121314151617181920#查看arl的3个容器idroot@iZbp147armg418pwpi4455Z:~# docker psCONTAINER ID   IMAGE                                                                      COMMAND                  CREATED      STATUS      PORTS                                                                 ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/%E4%BB%99%E5%B0%8A.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">StarWhale</div><div class="author-info-description">抬头看，满天星光甚烂漫；低头看，满路荆棘已过半</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>关注我</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">这是我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%88%E5%8A%A0%E5%AF%86%E5%86%8D%E7%AD%BE%E5%90%8D%E7%9A%84%E5%8D%B1%E5%AE%B3"><span class="toc-number">1.</span> <span class="toc-text">先加密再签名的危害</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BF%E5%B0%84%E5%AF%86%E7%A0%81%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">仿射密码：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E5%AF%86%E7%A0%81%E4%B8%8E%E6%B5%81%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">分组密码与流密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B7%E6%B7%86%E4%B8%8E%E6%89%A9%E6%95%A3"><span class="toc-number">4.</span> <span class="toc-text">混淆与扩散</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DES%E5%8A%A0%E5%AF%86-64bit-8%E4%B8%8D%E5%90%8CS%E7%9B%92"><span class="toc-number">5.</span> <span class="toc-text">DES加密(64bit,8不同S盒)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ECB"><span class="toc-number">5.1.</span> <span class="toc-text">ECB</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AES%E5%8A%A0%E5%AF%86-128bit-%E7%9B%B8%E5%90%8CS%E7%9B%92"><span class="toc-number">6.</span> <span class="toc-text">AES加密(128bit,相同S盒)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E4%BD%93%E5%88%B6"><span class="toc-number">7.</span> <span class="toc-text">公钥体制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA"><span class="toc-number">8.</span> <span class="toc-text">RSA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">离散对数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ElGamal%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6"><span class="toc-number">10.</span> <span class="toc-text">ElGamal密码体制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6%EF%BC%88ECC%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">椭圆曲线密码体制（ECC）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hash%E5%87%BD%E6%95%B0"><span class="toc-number">12.</span> <span class="toc-text">Hash函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MD5"><span class="toc-number">13.</span> <span class="toc-text">MD5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SHA"><span class="toc-number">14.</span> <span class="toc-text">SHA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E7%A0%81-MAC"><span class="toc-number">15.</span> <span class="toc-text">消息认证码 MAC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">16.</span> <span class="toc-text">数字签名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lamport-%E4%B8%80%E6%AC%A1%E6%80%A7%E7%AD%BE%E5%90%8D"><span class="toc-number">17.</span> <span class="toc-text">Lamport 一次性签名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B2%E7%AD%BE%E5%90%8D"><span class="toc-number">18.</span> <span class="toc-text">盲签名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DSS%EF%BC%8CDSA-vs-RSA"><span class="toc-number">19.</span> <span class="toc-text">DSS，DSA vs RSA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PGP"><span class="toc-number">20.</span> <span class="toc-text">PGP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86"><span class="toc-number">21.</span> <span class="toc-text">密钥管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Diffie-Hellman%E5%AF%86%E9%92%A5%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE-DH-KEP"><span class="toc-number">22.</span> <span class="toc-text">Diffie-Hellman密钥交换协议(DH-KEP)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PKI"><span class="toc-number">23.</span> <span class="toc-text">PKI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shamir%E9%97%A8%E9%99%90%E7%A7%98%E5%AF%86%E5%85%B1%E4%BA%AB"><span class="toc-number">24.</span> <span class="toc-text">Shamir门限秘密共享</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/27/KeyBase/" title="密码学">密码学</a><time datetime="2026-06-27T08:43:01.862Z" title="发表于 2026-06-27 16:43:01">2026-06-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/06/07/src/" title="SRC思路">SRC思路</a><time datetime="2026-06-07T11:10:44.670Z" title="发表于 2026-06-07 19:10:44">2026-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/05/29/JavaBase/" title="JAVA">JAVA</a><time datetime="2026-05-28T16:33:18.660Z" title="发表于 2026-05-29 00:33:18">2026-05-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/08/ctf.yijinglab.com/" title="CTF-Web">CTF-Web</a><time datetime="2025-10-08T09:53:55.564Z" title="发表于 2025-10-08 17:53:55">2025-10-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/18/yijing24/" title="蚁景">蚁景</a><time datetime="2025-09-18T13:13:33.089Z" title="发表于 2025-09-18 21:13:33">2025-09-18</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2026 By StarWhale</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.2.2"></script><script src="/js/main.js?v=5.2.2"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
